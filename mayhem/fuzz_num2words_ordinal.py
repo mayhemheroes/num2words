@@ -8,7 +8,7 @@ with atheris.instrument_imports():
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
 
-    num = fdp.ConsumeRegularFloat()
+    num = fdp.ConsumeFloatInRange(0, sys.float_info.max)
 
     try:
         num2words(num, to='ordinal')
