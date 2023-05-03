@@ -58,18 +58,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        num2words_mayhemfile:
-          - mayhem/num2words.mayhemfile
+        mayhemfile:
+          - mayhem/num2words_cardinal.mayhemfile
+          - mayhem/num2words_ordinal.mayhemfile
+          - mayhem/num2words_ordinal_num.mayhemfile
+          - mayhem/num2words_year.mayhemfile
+          - mayhem/num2words_currency.mayhemfile
 
     steps:
       - uses: actions/checkout@v3
 
-
-      - name: Start analysis for ${{ matrix.num2words_mayhemfile }}
+      - name: Start analysis for ${{ matrix.mayhemfile }}
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.num2words_mayhemfile }} --duration 600
+          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.mayhemfile }} --duration 600
           sarif-output: sarif
 
       - name: Upload SARIF file(s)

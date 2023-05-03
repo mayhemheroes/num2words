@@ -1,0 +1,6 @@
+project: num_2_words
+target: num2words_year
+duration: 600
+cmds:
+    - cmd: /src/mayhem/fuzz_num2words_year.py
+      libfuzzer: true

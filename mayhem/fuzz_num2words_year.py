@@ -11,7 +11,7 @@ def TestOneInput(data):
     num = fdp.ConsumeRegularFloat()
 
     try:
-        num2words(num)
+        num2words(num, to='year')
     except OverflowError:
         pass
 
